@@ -1,0 +1,68 @@
+<div class="container mt-5">
+  <div *ngIf="successmsg" class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>{{successmsg}}</strong> 
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" placeholder="Search by title or category" [(ngModel)]="searchTerm">
+    <button class="btn btn-outline-secondary" type="button" (click)="search()">Search</button>
+  </div>
+
+  <div class="btn-group" role="group" aria-label="Basic example">
+  
+    <button type="button" class="btn btn-secondary" (click)="sortByRating('rating_rate')">Sort by Rating Rate</button>
+    &nbsp;
+    &nbsp;
+    <button type="button" class="btn btn-secondary" (click)="sortByRating('rating_count')">Sort by Rating Count</button>
+  </div> 
+  &nbsp;
+  &nbsp;
+  <button class="btn btn-secondary" (click)="resetSorting()">Reset Sorting</button>
+  &nbsp;
+  &nbsp;
+  <a [routerLink]="['/create']" class="btn btn-success mr-2">Create A new Product</a>
+  &nbsp;
+  <br>
+  <br>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Title</th>
+        <th scope="col">Price</th>
+        <th scope="col">Description</th>
+        <th scope="col">Category</th>
+        <th scope="col">Image</th>
+        <th scope="col">Rate</th>
+        <th scope="col">Count</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let us of readData">
+        <td>{{us.id}}</td>
+        <td>{{us.title}}</td>
+        <td>{{us.price}}</td>
+        <td>{{us.description}}</td>
+        <td>{{us.category}}</td>
+        <td>
+          <img [src]="us.image" style="width: 50px; height: auto;">
+        </td>
+        <td>{{us.rating_rate}}</td>
+        <td>{{us.rating_count}}</td>
+        <td>
+          <button class="btn btn-sm btn-danger" (click)="deleteID(us.id)">Delete
+          </button>
+          <hr>
+          <button [routerLink]="['/create',us.id]" class="btn btn-sm btn-success" >Update
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+

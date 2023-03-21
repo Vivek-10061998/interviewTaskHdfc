@@ -1,0 +1,59 @@
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+<div class="container mt-5">
+    <div *ngIf="errormsg" class="alert alert-danger alert-dismissible fade show" role="alert">
+      <strong>{{errormsg}}</strong> 
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    
+    <div *ngIf="successmsg" class="alert alert-success alert-dismissible fade show" role="alert">
+      <strong>{{successmsg}}</strong> 
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  
+    <form [formGroup]="productForm" (ngSubmit)="productSubmit()" class="row g-3">
+      <div class="col-lg-4">
+        <label for="id" class="form-label">Product ID</label>
+        <input type="text" class="form-control" formControlName="id" id="id" placeholder="Enter the product id" required>
+      </div>
+      <div class="col-lg-4">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" class="form-control" formControlName="title" id="title" placeholder="Enter the product Title" required>
+      </div>
+      <div class="col-lg-4">
+        <label for="price" class="form-label">Price</label>
+        <input type="number" class="form-control" formControlName="price" id="price" placeholder="Enter the product Price" required>
+      </div>
+      <div class="col-lg-12">
+        <label for="description" class="form-label">Description</label>
+        <textarea class="form-control" formControlName="description" id="description" rows="3" placeholder="Enter the product Description" required></textarea>
+      </div>
+      <div class="col-lg-4">
+        <label for="category" class="form-label">Category</label>
+        <input type="text" class="form-control" formControlName="category" id="category" placeholder="Enter the product Category" required>
+      </div>
+      <div class="col-lg-4">
+        <label for="image" class="form-label">Image URL</label>
+        <input type="text"class="form-control" formControlName="image" id="image" placeholder="Enter the product Image" required>
+      </div>
+      <div class="col-lg-4">
+        <label for="rating_rate" class="form-label">Rating Rate</label>
+        <input type="number" class="form-control" formControlName="rating_rate" id="rating_rate" placeholder="Enter the product Rate" required>
+      </div>
+      <div class="col-lg-4">
+        <label for="rating_count" class="form-label">Rating Count</label>
+        <input type="number"class="form-control" formControlName="rating_count" id="rating_count" placeholder="Enter the product Count" required>
+      </div>
+      <div class="col-lg-4 mt-2">
+        <button type="submit" class="btn btn-primary">Create</button>
+      </div>
+      <br>
+      <div class="col-lg-4 mt-2" *ngIf="getparamid">
+        <button type="button" class="btn btn-dark" (click)="productUpdate()">Update</button>
+      </div>
+    </form>
+      </div>
+  </div>
+</div>
